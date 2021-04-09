@@ -1,14 +1,14 @@
 package main // import "go-autoconfig"
 
 import (
-	"flag"
 	"fmt"
 	"io"
 	"os"
 	"text/template"
-
+	
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	flag "github.com/spf13/pflag"
 
 	"go-autoconfig/config"
 	"go-autoconfig/handlers"
