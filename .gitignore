@@ -3,3 +3,4 @@
 
 # go modules
 go.sum
+.vscode

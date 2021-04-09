@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 	"text/template"
-	
+
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	flag "github.com/spf13/pflag"
@@ -17,21 +17,20 @@ import (
 
 var path = flag.String(
 	"config",
-	"",
+	os.Getenv("CONFIG"),
 	"enter path to config file",
 )
 
 func main() {
 	// Parse at first startup
 	flag.Parse()
-
+	
 	// Read config
-	conf, err := config.NewConfig(*path)
+	conf, err := config.New(*path)
 	if err != nil {
-		fmt.Printf("Incorrect path or config itself! See help.\n%s\n", err.Error())
+		fmt.Printf("Failed to load configuration: %v\n", err)
 		os.Exit(2)
 	}
-
 	tmpl := &Template{
 		templates: templates.Templates,
 	}
@@ -39,6 +38,7 @@ func main() {
 	// Init Echo
 	e := echo.New()
 	e.Renderer = tmpl
+	e.HideBanner = true
 
 	// Middleware
 	e.Use(middleware.Logger())
