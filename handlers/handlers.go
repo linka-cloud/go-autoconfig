@@ -50,12 +50,12 @@ func (h *Handler) Outlook(ctx echo.Context) error {
 		Email:  req.Request.EMailAddress,
 		Domain: h.Config.Domain,
 		IMAP: &server{
-			Host:     h.Config.IMAP.Host,
+			Host:     h.Config.IMAP.Server,
 			Port:     h.Config.IMAP.Port,
 			STARTTLS: h.Config.IMAP.STARTTLS,
 		},
 		SMTP: &server{
-			Host:     h.Config.SMTP.Host,
+			Host:     h.Config.SMTP.Server,
 			Port:     h.Config.SMTP.Port,
 			STARTTLS: h.Config.SMTP.STARTTLS,
 		},
@@ -73,12 +73,12 @@ func (h *Handler) Thunderbird(ctx echo.Context) error {
 	}{
 		Domain: h.Config.Domain,
 		IMAP: &server{
-			Host:     h.Config.IMAP.Host,
+			Host:     h.Config.IMAP.Server,
 			Port:     h.Config.IMAP.Port,
 			STARTTLS: h.Config.IMAP.STARTTLS,
 		},
 		SMTP: &server{
-			Host:     h.Config.SMTP.Host,
+			Host:     h.Config.SMTP.Server,
 			Port:     h.Config.SMTP.Port,
 			STARTTLS: h.Config.SMTP.STARTTLS,
 		},
@@ -105,11 +105,11 @@ func (h *Handler) AppleMail(ctx echo.Context) error {
 		Email:  req.Email,
 		Domain: h.Config.Domain,
 		IMAP: &server{
-			Host: h.Config.IMAP.Host,
+			Host: h.Config.IMAP.Server,
 			Port: h.Config.IMAP.Port,
 		},
 		SMTP: &server{
-			Host: h.Config.SMTP.Host,
+			Host: h.Config.SMTP.Server,
 			Port: h.Config.SMTP.Port,
 		},
 	}

@@ -22,7 +22,7 @@ func (c Config) Validate() error {
 }
 
 type Server struct {
-	Host     string `yaml:"server" mapstructure:"server" validate:"required"`
+	Server     string `yaml:"server" mapstructure:"server" validate:"required"`
 	Port     int    `yaml:"port" mapstructure:"port" validate:"required"`
 	STARTTLS bool   `yaml:"starttls" mapstructure:"starttls"`
 }

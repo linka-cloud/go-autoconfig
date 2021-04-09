@@ -19,5 +19,5 @@ Of course `autoconfig.example.com` domain should point to your server with this 
 ## Installation
 1. Compile (`go mod tidy && go build -o server`) or download binary from releases tab.
 2. Edit config.yml.
-3. Launch it `./server -config config.yml`.
+3. Launch it `./server --config config.yml`.
 4. Optionally use `nginx` as reverse-proxy and `systemd` to do daemon.
