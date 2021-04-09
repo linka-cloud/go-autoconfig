@@ -1,3 +1,6 @@
+package templates
+
+const outlook = `
 {{ define "outlook" }}<?xml version="1.0" encoding="utf-8"?>
 <Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/responseschema/2006">
 	<Response xmlns="{{ .Schema }}">
@@ -50,3 +53,4 @@
 		</Account>
 	</Response>
 </Autodiscover>{{ end }}
+`

@@ -1,3 +1,6 @@
+package templates
+
+const thunderbird = `
 {{define "thunderbird"}}<?xml version="1.0" encoding="UTF-8"?>
 <clientConfig version="1.1">
 	<emailProvider id="{{ .Domain }}">
@@ -23,3 +26,4 @@
 	    </outgoingServer>
 	</emailProvider>
 </clientConfig>{{end}}
+`

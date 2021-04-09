@@ -105,12 +105,12 @@ func (h *Handler) AppleMail(ctx echo.Context) error {
 		Email:  req.Email,
 		Domain: h.Config.Domain,
 		IMAP: &server{
-			Host:     h.Config.IMAP.Host,
-			Port:     h.Config.IMAP.Port,
+			Host: h.Config.IMAP.Host,
+			Port: h.Config.IMAP.Port,
 		},
 		SMTP: &server{
-			Host:     h.Config.SMTP.Host,
-			Port:     h.Config.SMTP.Port,
+			Host: h.Config.SMTP.Host,
+			Port: h.Config.SMTP.Port,
 		},
 	}
 

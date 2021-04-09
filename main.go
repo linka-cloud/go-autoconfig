@@ -3,14 +3,16 @@ package main // import "go-autoconfig"
 import (
 	"flag"
 	"fmt"
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
-	"go-autoconfig/config"
-	"go-autoconfig/handlers"
 	"io"
 	"os"
-	"path/filepath"
 	"text/template"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+
+	"go-autoconfig/config"
+	"go-autoconfig/handlers"
+	"go-autoconfig/templates"
 )
 
 var path = flag.String(
@@ -31,7 +33,7 @@ func main() {
 	}
 
 	tmpl := &Template{
-		templates: template.Must(template.ParseGlob(filepath.Join("templates", "*.tmpl"))),
+		templates: templates.Templates,
 	}
 
 	// Init Echo
