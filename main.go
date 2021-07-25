@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 	"text/template"
 
 	"github.com/labstack/echo"
@@ -41,11 +42,12 @@ func main() {
 	e.HideBanner = true
 
 	// Middleware
+	e.Pre(LowerPath)
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
 	// Routes
-	h := handlers.Handler{conf}
+	h := handlers.Handler{Config: conf}
 	e.POST("/autodiscover/autodiscover.xml", h.Outlook)
 	e.GET("/mail/config-v1.1.xml", h.Thunderbird)
 	e.GET("/email.mobileconfig", h.AppleMail)
@@ -60,4 +62,12 @@ type Template struct {
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
 	return t.templates.ExecuteTemplate(w, name, data)
+}
+
+func LowerPath(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		c.Request().URL.Path = strings.ToLower(c.Request().URL.Path)
+		next(c)
+		return nil
+	}
 }
