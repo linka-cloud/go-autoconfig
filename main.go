@@ -50,6 +50,7 @@ func main() {
 	h := handlers.Handler{Config: conf}
 	e.POST("/autodiscover/autodiscover.xml", h.Outlook)
 	e.GET("/mail/config-v1.1.xml", h.Thunderbird)
+	e.GET("/.well-known/autoconfig/mail/config-v1.1.xml", h.Thunderbird)
 	e.GET("/email.mobileconfig", h.AppleMail)
 
 	// Start server
