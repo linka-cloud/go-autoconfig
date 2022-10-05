@@ -2,10 +2,12 @@ package handlers
 
 import (
 	"encoding/xml"
-	"github.com/labstack/echo"
-	"go-autoconfig/config"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/labstack/echo"
+
+	"go-autoconfig/config"
 )
 
 type Handler struct {
@@ -114,6 +116,6 @@ func (h *Handler) AppleMail(ctx echo.Context) error {
 		},
 	}
 
-	ctx.Response().Header().Set(echo.HeaderContentType, echo.MIMEApplicationXMLCharsetUTF8)
+	ctx.Response().Header().Set(echo.HeaderContentType, echo.MIMEOctetStream)
 	return ctx.Render(http.StatusOK, "applemail", data)
 }
